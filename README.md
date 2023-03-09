@@ -1,2 +1,2 @@
-# Next.js
-Playground to study main concepts of next.js
+# Next JS
+Playground to learn basic features of Next.JS
