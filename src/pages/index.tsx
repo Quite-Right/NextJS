@@ -24,6 +24,11 @@ const Home = () => {
             Docs
         </div>
     </Link>
+    <Link href="./users">
+        <div>
+            Users
+        </div>
+    </Link>
     <button onClick={handleClick}>
         Place order
     </button>
