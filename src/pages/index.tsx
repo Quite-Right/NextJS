@@ -14,6 +14,11 @@ const Home = () => {
             About
         </div>
     </Link>
+    <Link href="./posts">
+        <div>
+            Posts
+        </div>
+    </Link>
     <Link href="./product">
         <div>
             Product

@@ -23,7 +23,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             post
-        }
+        },
+        revalidate: 30
     };
 }
 
@@ -37,7 +38,7 @@ export const getStaticPaths = async () => {
                 postId: postId.toString()
             }
         })),
-        fallback: true
+        fallback: true,
     })
 }
 
