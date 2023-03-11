@@ -17,11 +17,11 @@ const NewsByCategory = ({articles, category}: INewsByCategoryProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const {params} = context;
+    const {params, req, res, query} = context;
     const category = params?.category;
     console.log('getServerSideProps')
-    const res = await fetch(`http://localhost:4000/news?category=${category}`);
-    const data = await res.json();
+    const fetchRes = await fetch(`http://localhost:4000/news?category=${category}`);
+    const data = await fetchRes.json();
     console.log({res,data})
     return {
         props: {
