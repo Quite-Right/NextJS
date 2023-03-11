@@ -15,9 +15,9 @@ const Posts = ({posts}: IPostsProps) => {
     </>
 }
 
-export const getStaticProps = () => fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json()).then(posts => ({
+export const getStaticProps = () => fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json()).then((posts: any[]) => ({
     props: {
-        posts
+        posts: posts.slice(0, 3)
     }
 }))
 
