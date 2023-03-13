@@ -24,5 +24,28 @@
         "likes": 10,
         "followers": 20,
         "following": 30
-    }
+    },
+    "events": [
+        {
+            "id": 1,
+            "title": "News Event 1",
+            "description": "Description 1",
+            "category": "sports",
+            "date": "April 25"
+        },
+        {
+            "id": 2,
+            "title": "News Event 2",
+            "description": "Description 2",
+            "category": "sports",
+            "date": "May 25"
+        },
+        {
+            "id": 3,
+            "title": "News Event 3",
+            "description": "Description 3",
+            "category": "it",
+            "date": "October 25"
+        }
+    ]
 }
