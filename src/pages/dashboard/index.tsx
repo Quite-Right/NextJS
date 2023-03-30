@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import styles from "../../styles/Dashboard.module.scss"
 
 export default function Dashboard() {
  const [request, setRequest] = useState<{
@@ -22,7 +22,7 @@ export default function Dashboard() {
 
  if (fetching) return <h1>Loading...</h1>
  return <>
-    <h1>
+    <h1 className={styles.header}>
         Dashboard
     </h1>
     <div>
