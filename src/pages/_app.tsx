@@ -1,7 +1,10 @@
 // ADD GLOBAL STYLING due to convention in _app file
 // you can add anything like material ui or bootstrap here
+import Footer from '@/components/footer';
+import Header from '@/components/header';
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+import { ReactNode } from 'react';
 import {ThemeProvider} from 'styled-components';
 
 const theme = {
@@ -10,8 +13,19 @@ const theme = {
   }
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+interface AppPropsWithLayout extends AppProps {
+  Component: NextComponentType<NextPageContext, any, any> | {
+    getLayout: ReactNode;
+  };
+}
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return <ThemeProvider theme={theme}>
-    <Component {...pageProps} />
+    {Component.getLayout ?
+    Component.getLayout(<Component {...pageProps} />) : <>
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
+    </>}
     </ThemeProvider>
 }

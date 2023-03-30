@@ -1,10 +1,17 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 const Post = ({post}: InferGetStaticPropsType<typeof getStaticProps>) => {
     const router = useRouter();
     if (router.isFallback) return <h1>Loading...</h1>
     return <>
+        <Head>
+            <title>
+                {post.title}
+            </title>
+            <meta name='description' content={post.body} />
+        </Head>
         <h1>{post.title}</h1>
         <p>
             {post.body}
