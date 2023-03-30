@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../../styles/Dashboard.module.scss"
+import styles from "@/styles/Dashboard.module.scss"
 
 export default function Dashboard() {
  const [request, setRequest] = useState<{

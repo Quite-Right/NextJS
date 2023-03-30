@@ -1,5 +1,5 @@
 import Image from "next/image"
-import imgPlaceholder from '../../public/1.jpg'
+import imgPlaceholder from '@/../public/1.jpg'
 
 export default function PetsPage() {
     return <>
