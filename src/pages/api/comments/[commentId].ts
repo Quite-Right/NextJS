@@ -1,6 +1,7 @@
 import { comments } from "@/data/comments";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const {commentId} = req.query;
     if (req.method === 'GET') {
         res.status(200).json(comments.find(
