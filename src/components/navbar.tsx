@@ -1,4 +1,4 @@
-import { signIn, signOut } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -7,37 +7,40 @@ const Nav = styled.nav`
     justify-content: space-between;
 `
 
-const routes = [
-    {
-        href: '/',
-        text: 'Home'
-    },
-    {
-        href: '/dashboard',
-        text: 'Dashboard'
-    },
-    {
-        href: '/blog',
-        text: 'Blog'
-    },
-    {
-        href: '/api/auth/sign-in',
-        text: 'Sign in',
-        onClick: signIn
-    },
-    {
-        href: '/api/auth/sign-out',
-        text: 'Sign out',
-        onClick: signOut
-    }
-]
+
 
 
 
 export default function Navbar() {
-    
+    const {data: session} = useSession();
+    const routes = [
+        {
+            href: '/',
+            text: 'Home'
+        },
+        {
+            href: '/dashboard',
+            text: 'Dashboard'
+        },
+        {
+            href: '/blog',
+            text: 'Blog'
+        },
+        {
+            href: '/api/auth/sign-in',
+            text: 'Sign in',
+            onClick: signIn,
+            hidden: session
+        },
+        {
+            href: '/api/auth/sign-out',
+            text: 'Sign out',
+            onClick: signOut,
+            hidden: !session
+        }
+    ]
     return <Nav>
-        {routes.map(({href, text, onClick}) => <Link onClick={onClick ? (e) => {
+        {routes.map(({href, text, onClick, hidden}) => hidden ? null : <Link onClick={onClick ? (e) => {
             e.preventDefault();
             onClick();
         }: onClick} key={text} href={href}>

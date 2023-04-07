@@ -3,6 +3,7 @@
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import '@/styles/globals.css'
+import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app'
 import { ReactNode } from 'react';
 import {ThemeProvider} from 'styled-components';
@@ -20,12 +21,14 @@ interface AppPropsWithLayout extends AppProps {
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  return <ThemeProvider theme={theme}>
-    {Component.getLayout ?
-    Component.getLayout(<Component {...pageProps} />) : <>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </>}
+  return <SessionProvider session={pageProps.session}>
+    <ThemeProvider theme={theme}>
+      {Component.getLayout ?
+      Component.getLayout(<Component {...pageProps} />) : <>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </>}
     </ThemeProvider>
+  </SessionProvider>
 }
